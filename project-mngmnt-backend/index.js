@@ -10,7 +10,7 @@ app.use(json());
 app.use(cors());
 
 app.get("/", (req, res) => {
-  res.status(200).send("Hello! I'm running Mr.Patrick");
+  res.status(200).send("Hello! I'm running just fine Mr.Patrick");
 });
 
 app.use("/api/users", userRouter);
