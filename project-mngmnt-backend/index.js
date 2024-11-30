@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import userRouter from "./routes/userRouter.js";
 import projectsRouter from "./routes/projectsRouter.js";
 import tasksRouter from "./routes/tasksRouter.js";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 app.use(json());
@@ -18,9 +20,7 @@ app.use("/api/projects", projectsRouter);
 app.use("/api/tasks", tasksRouter);
 
 mongoose
-  .connect(
-    "mongodb://salmanpatrick5:nullreference404@ac-udwippi-shard-00-00.ggtw5vj.mongodb.net:27017,ac-udwippi-shard-00-01.ggtw5vj.mongodb.net:27017,ac-udwippi-shard-00-02.ggtw5vj.mongodb.net:27017/?ssl=true&replicaSet=atlas-zl36w0-shard-0&authSource=admin&retryWrites=true&w=majority"
-  )
+  .connect(process.env.MONGODB_CONNECTION)
   .then(() => {
     console.log("App connected to database");
     app.listen(4000, () => {
